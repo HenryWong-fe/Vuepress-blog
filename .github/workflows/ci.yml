@@ -31,8 +31,7 @@ jobs:
       uses: easingthemes/ssh-deploy@v2.1.7
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        ARGS: "-rltgoDzvO"
-        SOURCE: "docs/.vuepress/dist"
+        SOURCE: 'public'
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        TARGET: '/vuepress-blog'
+        TARGET: '/usr/local/web/vuepress-blog'

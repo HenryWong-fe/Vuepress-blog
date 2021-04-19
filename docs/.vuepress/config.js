@@ -1,5 +1,6 @@
 module.exports = {
   title: 'Blue Sky Coming', // 文档博客标题
+  dest: 'public',
   description: 'feature will be right', // 文档博客描述
   markdown: {
     lineNumbers: true
