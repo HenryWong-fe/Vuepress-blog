@@ -40,7 +40,7 @@ jobs:
 
  
     - name: Deploy File to Tencent Server
-      uses: easingthemes/ssh-deploy@v2.1.7
+      uses: easingthemes/ssh-deploy@v2.1.5
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         ARGS: "-avz --delete"
