@@ -3,7 +3,7 @@ name: Vuepress Deploy CI
 on:
   push:
     branches:
-    - master
+    - main
     - test
 
 jobs:
