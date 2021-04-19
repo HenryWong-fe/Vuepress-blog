@@ -34,4 +34,10 @@ jobs:
         SOURCE: 'public'
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        TARGET: '/usr/local/web/vuepress-blog'
+        TARGET: '/root/web/vuepress-blog'
+
+    - name: Prepare SSH to work with the remote server
+        run: |
+          cd ~ && mkdir .ssh &&
+          touch ~/.ssh/known_hosts &&
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/known_hosts
