@@ -23,13 +23,13 @@ jobs:
         registry-url: 'https://registry.npm.taobao.org'
 
     - name: Cache node modules # 缓存依赖包
-        id: cache # 缓存id
-        uses: actions/cache@v2.1.4
-        env:
-          cache-name: cache-node-modules # 缓存名字
-        with:
-          path: node_modules # 缓存路径
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('package.json') }} # 缓存标识
+      id: cache # 缓存id
+      uses: actions/cache@v2.1.4
+      env:
+        cache-name: cache-node-modules # 缓存名字
+      with:
+        path: node_modules # 缓存路径
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('package.json') }} # 缓存标识
 
     - name: Install npm dependencies # 安装依赖
       if: steps.cache.outputs.cache-hit != 'true' # 如果没有缓存的话
@@ -40,15 +40,14 @@ jobs:
 
  
     - name: Deploy File to Tencent Server
-      uses: HenryWong-fe/ssh-deploy@master
+      uses: easingthemes/ssh-deploy@v2.1.7
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         ARGS: "-avz --delete"
         SOURCE: "docs/.vuepress/dist/"
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        TARGET: ${{ secrets.REMOTE_TARGET }}
-        DEPLOY_KEY_NAME: "id_rsa"    
+        TARGET: '/vuepress-blog'
         
     - name: upload-artifact
         uses: actions/upload-artifact@v2 #共享或保存action过程中产生的文件
