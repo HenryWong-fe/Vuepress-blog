@@ -47,9 +47,3 @@ jobs:
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
         TARGET: '/vuepress-blog'
-        
-    - name: upload-artifact
-        uses: actions/upload-artifact@v2 #共享或保存action过程中产生的文件
-        with:
-          name: static_web_file
-          path: ./docs/.vuepress/dist/ # or path/to/artifact
