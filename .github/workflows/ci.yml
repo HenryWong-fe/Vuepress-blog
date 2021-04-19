@@ -38,7 +38,6 @@ jobs:
     - name: Run build task # 构建
       run: npm run build --if-present
 
- 
     - name: Deploy File to Tencent Server
       uses: easingthemes/ssh-deploy@v2.1.5
       env:
